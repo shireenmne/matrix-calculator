@@ -1,4 +1,5 @@
-
+from .add import add_matrices
+from .subtract import sub_matrices
 class Matrix:
     def __init__(self, data):
         self.data = data
@@ -13,7 +14,18 @@ class Matrix:
             str_elements = []
             for element in row:
                 str_elements.append(str(element))
-            row_strings = '\t'.join(str_elements)
-            row_strings.append(row_strings)
+            row_string = '\t'.join(str_elements)
+            row_strings.append(row_string)
             matrix_string = '\n'.join(row_strings)
         return matrix_string
+    
+    def __add__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError("Can only add another Matrix instance")
+        result = add_matrices(self.data, other.data)
+        return Matrix(result)
+    def __sub__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError("Can only subtract another Matrix instance")
+        result = sub_matrices(self.data, other.data)
+        return Matrix(result)
