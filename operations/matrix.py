@@ -1,5 +1,6 @@
 from .add import add_matrices
 from .subtract import sub_matrices
+from .multiply import mult_matrices
 class Matrix:
     def __init__(self, data):
         self.data = data
@@ -29,4 +30,10 @@ class Matrix:
         if not isinstance(other, Matrix):
             raise TypeError("Can only subtract another Matrix instance")
         result = sub_matrices(self.data, other.data)
+        return Matrix(result)
+    
+    def __mul__(self, other):
+        if not isinstance(other, Matrix):
+            raise TypeError("Can only multiply by another Matrix instance")
+        result = mult_matrices(self.data, other.data)
         return Matrix(result)
