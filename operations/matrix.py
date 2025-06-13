@@ -24,6 +24,7 @@ class Matrix:
             raise TypeError("Can only add another Matrix instance")
         result = add_matrices(self.data, other.data)
         return Matrix(result)
+    
     def __sub__(self, other):
         if not isinstance(other, Matrix):
             raise TypeError("Can only subtract another Matrix instance")
