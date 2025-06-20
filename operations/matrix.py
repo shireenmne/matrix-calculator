@@ -1,6 +1,8 @@
 from .add import add_matrices
 from .subtract import sub_matrices
 from .multiply import mult_matrices
+from .row_operations import swap_rows, scale_row, add_rows
+from .row_reductions import row_echelon_form
 class Matrix:
     def __init__(self, data):
         self.data = data
