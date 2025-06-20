@@ -15,8 +15,7 @@ def row_echelon_form(matrix):
         if not found: # No pivot found in this column
             continue
         pivot_value = m[pivot_row][pivot_col] 
-        if pivot_value != 1:
-            scale_row(m, pivot_row, 1 / pivot_value) # Normalize the pivot row
+        scale_row(m, pivot_row, 1 / pivot_value)  # Scale the pivot row to make the pivot value 1
         for r in range(pivot_row + 1, rows):
             factor = m[r][pivot_col]
             if factor != 0:
@@ -27,6 +26,8 @@ def row_echelon_form(matrix):
     return m
 
 def reduced_row_echelon_form(matrix):
-
-        
-
+    m = row_echelon_form(matrix)  # Start with the row echelon form
+    rows = len(m)
+    cols = len(m[0])
+    for pivot_row in range(rows - 1, -1, -1):  # Iterate from the last row to the first
+        for 
