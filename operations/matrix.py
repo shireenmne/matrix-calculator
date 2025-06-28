@@ -2,7 +2,9 @@ from .add import add_matrices
 from .subtract import sub_matrices
 from .multiply import mult_matrices
 from .row_operations import swap_rows, scale_row, add_rows
-from .row_reductions import row_echelon_form
+from .row_reductions import row_echelon_form, reduced_row_echelon_form
+from .transpose import transpose
+
 class Matrix:
     def __init__(self, data):
         self.data = data
@@ -58,9 +60,14 @@ class Matrix:
         add_rows(self.data, source_row, target_row, scalar)
         return self
     
+    def transpose(self):
+        result = transpose(self.data)
+        return Matrix(result)
+    
     def row_echelon_form(self):
         result = row_echelon_form(self.data)
         return Matrix(result)
     
     def reduced_row_echelon_form(self):
-        results
+        results = reduced_row_echelon_form(self.data)
+        return Matrix(results)

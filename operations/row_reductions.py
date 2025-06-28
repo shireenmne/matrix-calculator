@@ -30,4 +30,13 @@ def reduced_row_echelon_form(matrix):
     rows = len(m)
     cols = len(m[0])
     for pivot_row in range(rows - 1, -1, -1):  # Iterate from the last row to the first
-        for 
+        pivot_col = 0
+        while pivot_col < cols and m[pivot_row][pivot_col] == 0:
+            pivot_col += 1
+        if pivot_col < cols:  
+            for r in range(pivot_row - 1, -1, -1):
+                factor = m[r][pivot_col]
+                if factor != 0:
+                    add_rows(m, pivot_row, r, -factor)
+    return m
+

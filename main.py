@@ -1,9 +1,16 @@
 from operations.matrix  import Matrix
-from operations.row_reductions import row_echelon_form
 
 
-a = Matrix([[1, 2], [3, 4], [5, 6]])
-b = Matrix([[5, 6], [7, 8]])
-print("Matrix A:")
-print(a)
-print(row_echelon_form(a.data))
+m = Matrix([
+    [1, 2, -1, -4],
+    [2, 3, -1, -11],
+    [-2, 0, -3, 22]
+])
+
+print("Original Matrix:")
+print(m)
+
+rref = m.reduced_row_echelon_form()
+
+print("\nReduced Row Echelon Form:")
+print(rref)
