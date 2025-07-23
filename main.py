@@ -1,9 +1,6 @@
 from operations.determinant import determinant
+from operations.matrix import Matrix
 
-matrix = [
-    [1, 2, 3],
-    [0, 4, 5],
-    [1, 0, 6]
-]
 
-print("Determinant:", determinant(matrix))
+A = Matrix([[2, 1], [5, 3]])
+print(A.inverse())

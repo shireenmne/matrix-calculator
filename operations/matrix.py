@@ -5,6 +5,8 @@ from .row_operations import swap_rows, scale_row, add_rows
 from .row_reductions import row_echelon_form, reduced_row_echelon_form
 from .transpose import transpose
 from .scalar import scale_matrix
+from .determinant import determinant
+from .inverse import inverse
 
 class Matrix:
     def __init__(self, data):
@@ -78,3 +80,18 @@ class Matrix:
     def reduced_row_echelon_form(self):
         results = reduced_row_echelon_form(self.data)
         return Matrix(results)
+    
+    def determinant(self):
+        if self.rows != self.cols:
+            raise ValueError("Determinant can only be calculated for square matrices")
+        det = determinant(self.data)
+        return det
+    
+    def inverse(self):
+        if self.rows != self.cols:
+            raise ValueError("Inverse can only be calculated for square matrices")
+        if self.determinant() == 0:
+            raise ValueError("Matrix is singular and cannot be inverted")
+        inv = inverse(self.data)
+        return Matrix(inv)
+    
