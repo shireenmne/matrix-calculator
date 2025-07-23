@@ -4,6 +4,7 @@ from .multiply import mult_matrices
 from .row_operations import swap_rows, scale_row, add_rows
 from .row_reductions import row_echelon_form, reduced_row_echelon_form
 from .transpose import transpose
+from .scalar import scale_matrix
 
 class Matrix:
     def __init__(self, data):
@@ -54,6 +55,12 @@ class Matrix:
         scale_row(self.data, row, scalar)
         return self
     
+    def scale(self, scalar):
+        if not isinstance(scalar, (int, float)):
+            raise TypeError("Scalar must be a number")
+        result = scale_matrix(self.data, scalar)
+        return Matrix(result)
+
     def add_rows(self, source_row, target_row, scalar=1):
         if source_row < 0 or target_row < 0 or source_row >= self.rows or target_row >= self.rows:
             raise IndexError("Row indices out of range")
