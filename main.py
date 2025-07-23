@@ -1,4 +1,3 @@
-from operations.determinant import determinant
 from operations.matrix import Matrix
 
 
